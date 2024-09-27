@@ -9,10 +9,7 @@ require("dotenv").config(); // Load environment variables from .env file
 const app = express();
 
 // Connect to MongoDB using Mongoose
-mongoose.connect(`${process.env.MONGODB_API_KEY}`, {
-  useNewUrlParser: true, // Use the new MongoDB connection string parser
-  useUnifiedTopology: true, // Use the new server discovery and monitoring engine
-});
+mongoose.connect(`${process.env.MONGODB_API_KEY}`);
 
 // Enable CORS for cross-origin requests
 // CORS is required when a client (e.g., frontend) and server are on different origins/domains.

@@ -9,7 +9,9 @@ require("dotenv").config(); // Load environment variables from .env file
 const app = express();
 
 // Connect to MongoDB using Mongoose
-mongoose.connect(`${process.env.MONGODB_API_KEY}`);
+mongoose.connect(
+  `mongodb+srv://${process.env.MONGODB_USERNAME}CBlystone67:${process.env.MONGODB_PASSWORD}@todos.levn0.mongodb.net/`
+);
 
 // Enable CORS for cross-origin requests
 // CORS is required when a client (e.g., frontend) and server are on different origins/domains.

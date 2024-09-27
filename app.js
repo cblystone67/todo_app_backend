@@ -10,7 +10,7 @@ const app = express();
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(
-  `mongodb+srv://${process.env.MONGODB_USERNAME}CBlystone67:${process.env.MONGODB_PASSWORD}@todos.levn0.mongodb.net/`
+  `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@todos.levn0.mongodb.net/`
 );
 
 // Enable CORS for cross-origin requests

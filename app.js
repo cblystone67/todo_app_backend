@@ -8,6 +8,10 @@ require("dotenv").config(); // Load environment variables from .env file
 // Initialize Express app
 const app = express();
 
+const corsOptions = {
+  origin: "https://captblytodos.netlify.app", // Replace with your Netlify app URL
+  optionsSuccessStatus: 200,
+};
 // Connect to MongoDB using Mongoose
 mongoose.connect(
   `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@todos.levn0.mongodb.net/`
@@ -16,7 +20,7 @@ mongoose.connect(
 // Enable CORS for cross-origin requests
 // CORS is required when a client (e.g., frontend) and server are on different origins/domains.
 // It allows the server to accept requests from a different origin, such as a frontend hosted separately.
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Parse incoming JSON request bodies
 app.use(express.json());

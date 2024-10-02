@@ -36,7 +36,7 @@ app.post("/add-item", async (req, res) => {
 // Define a POST route to update an existing todo by ID
 app.post("/edit-item/:id", async (req, res) => {
   const updatedTodo = await Todos.findOneAndUpdate(
-    { _id: req.params.id },
+    { id: req.params.id },
     req.body,
     { new: true }
   ); // Update the todo and return the updated document

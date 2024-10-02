@@ -39,12 +39,16 @@ app.post("/add-item", async (req, res) => {
 
 // Define a POST route to update an existing todo by ID
 app.post("/edit-item/:id", async (req, res) => {
-  const updatedTodo = await Todos.findOneAndUpdate(
-    { _id: req.params.id },
-    req.body,
-    { new: true }
-  ); // Update the todo and return the updated document
-  res.json(updatedTodo); // Send the updated todo as a JSON response
+  try {
+    const updatedTodo = await Todos.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: { text: req.body.text, completed: req.body.completed } }, // Update both task and completed status
+      { new: true }
+    );
+    res.json(updatedTodo);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update todo" });
+  }
 });
 
 // Define a DELETE route to remove a todo by ID
